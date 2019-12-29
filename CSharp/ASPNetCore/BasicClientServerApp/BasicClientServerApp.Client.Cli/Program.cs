@@ -1,5 +1,7 @@
-﻿using BasicClientServerApp.Client.Cli.Services;
+﻿using BasicClientServerApp.Client.Cli.Models;
+using BasicClientServerApp.Client.Cli.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace BasicClientServerApp.Client.Cli
 {
@@ -7,21 +9,73 @@ namespace BasicClientServerApp.Client.Cli
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Starting Client");
-            var employeeService = new EmployeeService();
-            Console.WriteLine("Press enter to continue");
-            var id = Console.ReadLine();
-            var result = employeeService.GetEmployee(id);
-                if(result.Length > 3)
-                {
-                    Console.WriteLine(result);
-                }
-                else
-                {
-                    Console.WriteLine(result);
-                    Console.WriteLine("Retrying...");
-                }
+            MainAsync()
+                .GetAwaiter()
+                .GetResult();
+        }
 
+        private static async Task MainAsync()
+        {
+            Console.WriteLine("Starting Client");
+            string baseUri = "https://localhost:44308";
+            var employeeService = new EmployeeService(baseUri);
+            Console.WriteLine("Press enter Command <id, delete, name, all, create, q> to continue");
+            var command = Console.ReadLine();
+            while (true)
+            {
+                await ProcessCommandAsync(employeeService, command);
+                command = Console.ReadLine();
+            }
+        }
+
+        private static async Task ProcessCommandAsync(EmployeeService employeeService, string command)
+        {
+            string result = string.Empty;
+            if (command == "id")
+            {
+                Console.WriteLine("Press enter id to continue");
+                var c = Console.ReadLine();
+                result = await employeeService.GetEmployeeByIdAsync(int.Parse(c));
+            }
+            if (command == "delete")
+            {
+                Console.WriteLine("Press enter id to continue");
+                var c = Console.ReadLine();
+                result = await employeeService.DeleteEmployeeAsync(int.Parse(c));
+            }
+            if (command == "name")
+            {
+                Console.WriteLine("Press enter name to continue");
+                var c = Console.ReadLine();
+                result = await employeeService.GetEmployeeByNameAsync(c);
+            }
+            if (command == "all")
+            {
+                result = await employeeService.GetAllEmployeeAsync();
+            }
+            if (command == "create")
+            {
+                var model = new EmployeeCreationModel();
+                Console.WriteLine("Enter First:");
+                var firstName = Console.ReadLine();
+                model.FirstName = firstName;
+                Console.WriteLine("Enter LastName:");
+                var lastName = Console.ReadLine();
+                model.LastName = lastName;
+                Console.WriteLine("Enter CompanyName:");
+                var companyName = Console.ReadLine();
+                model.CompanyName = companyName;
+                Console.WriteLine("Enter BirthDay:");
+                var birthDay = Console.ReadLine();
+                model.Birthday = DateTime.Parse(birthDay);
+
+                result = await employeeService.CreateEmployeeAsync(model);
+            }
+            if (command == "q")
+            {
+                return;
+            }
+            Console.WriteLine(result);
         }
     }
 }
