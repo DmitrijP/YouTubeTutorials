@@ -1,7 +1,7 @@
-﻿using BasicClientServerApp.Client.Cli.Models;
-using BasicClientServerApp.Client.Cli.Services;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using BasicClientServerApp.Client.BusinessLogic.Models;
+using BasicClientServerApp.Client.BusinessLogic.Services;
 
 namespace BasicClientServerApp.Client.Cli
 {

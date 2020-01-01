@@ -1,11 +1,11 @@
-﻿using BasicClientServerApp.Client.Cli.Models;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BasicClientServerApp.Client.BusinessLogic.Models;
 
-namespace BasicClientServerApp.Client.Cli.Services
+namespace BasicClientServerApp.Client.BusinessLogic.Services
 {
-    class EmployeeService
+    public class EmployeeService
     {
 
         private static readonly HttpClient _httpClient = new HttpClient();

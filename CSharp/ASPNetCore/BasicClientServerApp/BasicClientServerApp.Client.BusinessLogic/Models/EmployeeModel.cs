@@ -1,7 +1,7 @@
 ﻿
-namespace BasicClientServerApp.Client.Cli.Models
+namespace BasicClientServerApp.Client.BusinessLogic.Models
 {
-    class EmployeeModel
+    public class EmployeeModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

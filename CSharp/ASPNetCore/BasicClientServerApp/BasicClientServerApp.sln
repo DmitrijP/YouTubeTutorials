@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicClientServerApp.Server", "BasicClientServerApp.Server\BasicClientServerApp.Server.csproj", "{27131555-E699-43A4-A81A-3897805C5E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicClientServerApp.Client.Cli", "BasicClientServerApp.Client.Cli\BasicClientServerApp.Client.Cli.csproj", "{90AF42EC-BC43-415C-9BF8-A07D88973C7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicClientServerApp.Client.Cli", "BasicClientServerApp.Client.Cli\BasicClientServerApp.Client.Cli.csproj", "{90AF42EC-BC43-415C-9BF8-A07D88973C7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicClientServerApp.Client.BusinessLogic", "BasicClientServerApp.Client.BusinessLogic\BasicClientServerApp.Client.BusinessLogic.csproj", "{01C4545D-A5DE-4678-B64E-B51DD17333D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicClientServerApp.Client.WPF", "BasicClientServerApp.Client.WPF\BasicClientServerApp.Client.WPF.csproj", "{DB48A954-CFA9-40A4-B9CD-0912FD0D76F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{90AF42EC-BC43-415C-9BF8-A07D88973C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90AF42EC-BC43-415C-9BF8-A07D88973C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90AF42EC-BC43-415C-9BF8-A07D88973C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C4545D-A5DE-4678-B64E-B51DD17333D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C4545D-A5DE-4678-B64E-B51DD17333D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C4545D-A5DE-4678-B64E-B51DD17333D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C4545D-A5DE-4678-B64E-B51DD17333D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB48A954-CFA9-40A4-B9CD-0912FD0D76F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB48A954-CFA9-40A4-B9CD-0912FD0D76F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB48A954-CFA9-40A4-B9CD-0912FD0D76F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB48A954-CFA9-40A4-B9CD-0912FD0D76F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

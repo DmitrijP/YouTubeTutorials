@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BasicClientServerApp.Client.Cli.Models
+namespace BasicClientServerApp.Client.BusinessLogic.Models
 {
-    class EmployeeCreationModel
+    public class EmployeeCreationModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
