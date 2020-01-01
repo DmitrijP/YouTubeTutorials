@@ -71,7 +71,7 @@ namespace SnakeGame.UI
             GameWorld.Children.Clear();
             if (!_gameWorld.IsRunning)
             {
-                _gameWorld.InitializeGame((int)DifficultySlider.Value);
+                _gameWorld.InitializeGame((int)DifficultySlider.Value, (int)ElementSizeSlider.Value);
                 StartBtn.IsEnabled = false;
             }
         }
@@ -87,13 +87,15 @@ namespace SnakeGame.UI
         {
             if (!_gameWorld.IsRunning)
             { 
-                _gameWorld.InitializeGame((int)DifficultySlider.Value);
+                _gameWorld.InitializeGame((int)DifficultySlider.Value, (int)ElementSizeSlider.Value);
                 StartBtn.IsEnabled = false;
             }
         }
 
         private void OptionsClick(object sender, RoutedEventArgs e)
         {
+            StartBtn.IsEnabled = !StartBtn.IsEnabled;
+            RestartBtn.IsEnabled = !RestartBtn.IsEnabled;
             this.DialogHost.IsOpen = !this.DialogHost.IsOpen;
         }
         internal void IncrementScore()

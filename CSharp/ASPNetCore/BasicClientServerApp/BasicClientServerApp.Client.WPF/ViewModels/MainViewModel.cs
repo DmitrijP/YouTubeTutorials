@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using BasicClientServerApp.Client.WPF.Commands;
 using BasicClientServerApp.Client.BusinessLogic.Services;
+using System.Collections.Generic;
+using BasicClientServerApp.Client.BusinessLogic.Models;
 
 namespace BasicClientServerApp.Client.WPF.ViewModels
 {
@@ -23,8 +25,8 @@ namespace BasicClientServerApp.Client.WPF.ViewModels
 
         public ICommand GetAllEmployeeCommand { get; set; }
 
-        private string _allEmployee;
-        public string AllEmployee { get { return _allEmployee; } private set { _allEmployee = value; OnPropChanged("AllEmployee"); } }
+        private IEnumerable<EmployeeModel> _allEmployee;
+        public IEnumerable<EmployeeModel> AllEmployee { get { return _allEmployee; } private set { _allEmployee = value; OnPropChanged("AllEmployee"); } }
 
         public async void GetAllEmployee()
         {

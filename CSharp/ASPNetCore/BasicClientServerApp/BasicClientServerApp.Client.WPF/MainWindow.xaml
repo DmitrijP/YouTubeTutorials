@@ -12,6 +12,37 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Command="{Binding GetAllEmployeeCommand}" Margin="5">GetAllEmployee</Button>
-        <TextBlock Grid.Row="1" VerticalAlignment="Stretch" Text="{Binding AllEmployee}"></TextBlock>
+        <ListView ItemsSource="{Binding AllEmployee}" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                            <Label Content="ID:"/>
+                            <Label Content="{Binding Id}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                            <Label Content="Name:"/>
+                            <Label Content="{Binding Name}"></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal">
+                            <Label Content="Company:"/>
+                            <Label Content="{Binding CompanyName}"></Label>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
+                            <Label Content="UserName:"/>
+                            <Label Content="{Binding UserName}"></Label>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>            
+        </ListView>
     </Grid>
 </Window>

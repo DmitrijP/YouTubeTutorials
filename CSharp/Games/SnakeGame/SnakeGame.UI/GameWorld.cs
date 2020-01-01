@@ -24,16 +24,17 @@ namespace SnakeGame.UI
         public GameWorld(MainWindow mainWindow)
         {
             this.mainWindow = mainWindow;
-            GameAreaWidth = mainWindow.GameWorld.ActualWidth;
-            GameAreaHeight = mainWindow.GameWorld.ActualHeight;
-            ElementSize = 20;
-            ColumnCount = (int)GameAreaWidth / ElementSize;
-            RowCount = (int)GameAreaHeight / ElementSize;
             _randoTron = new Random(DateTime.Now.Millisecond / DateTime.Now.Second);
         }
 
-        public void InitializeGame(int difficulty)
+        public void InitializeGame(int difficulty, int elementSize)
         {
+            ElementSize = elementSize;
+            GameAreaWidth = mainWindow.GameWorld.ActualWidth;
+            GameAreaHeight = mainWindow.GameWorld.ActualHeight;
+            ColumnCount = (int)GameAreaWidth / ElementSize;
+            RowCount = (int)GameAreaHeight / ElementSize;
+
             DrawGameWorld();
             InitializeSnake();
             InitializeTimer(difficulty);

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BasicClientServerApp.Client.BusinessLogic.Models;
 
@@ -16,16 +18,17 @@ namespace BasicClientServerApp.Client.BusinessLogic.Services
 
         public async Task<string> CreateEmployeeAsync(EmployeeCreationModel model)
         {
-            var modelAsJson = System.Text.Json.JsonSerializer.Serialize(model);
+            var modelAsJson = JsonSerializer.Serialize(model);
             var content = new StringContent(modelAsJson, System.Text.Encoding.UTF8, "application/json");
             var result = await _httpClient.PostAsync($"Employee/Create",content);
             return await CheckAndProcessResultAsync(result);
         }
 
-        public async Task<string> GetAllEmployeeAsync()
+        public async Task<IEnumerable<EmployeeModel>> GetAllEmployeeAsync()
         {
             var result = await _httpClient.GetAsync($"Employee/GetAll");
-            return await CheckAndProcessResultAsync(result);
+            var stream = await result.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<IEnumerable<EmployeeModel>>(stream, new JsonSerializerOptions {PropertyNameCaseInsensitive = true });
         }
 
         public async Task<string> GetEmployeeByNameAsync(string name)
