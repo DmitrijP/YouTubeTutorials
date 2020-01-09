@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace BasicClientServerApp.Server.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("{controller}")]
     public class EmployeeController : ControllerBase
@@ -22,6 +23,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "UserReader")]
         [Route("{action}")]
         public IEnumerable<EmployeeQueryModel> GetAll()
         {
@@ -30,6 +32,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "UserReader")]
         [Route("{action}/{userName}")]
         public IEnumerable<EmployeeQueryModel> Find(string userName)
         {
@@ -38,6 +41,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "UserReader")]
         [Route("{action}/{id:int}")]
         public EmployeeQueryModel Find(int id)
         {
@@ -46,14 +50,17 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "UserManager")]
         [Route("{action}")]
         public EmployeeEntity Create(EmployeeCreationModel model)
         {
             EmployeeEntity entity = _employeeMapper.Map(model);
+
             return _employeeStore.Insert(entity);
         }
 
         [HttpDelete]
+        [Authorize(Roles = "UserManager")]
         [Route("{action}/{id:int}")]
         public object Delete(int id)
         {

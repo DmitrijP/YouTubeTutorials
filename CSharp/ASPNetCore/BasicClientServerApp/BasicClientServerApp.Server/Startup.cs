@@ -24,6 +24,7 @@ namespace BasicClientServerApp.Server
             services.AddControllers();
             services.AddSingleton<EmployeeStore>();
             services.AddScoped<EmployeeMapper>();
+            services.AddScoped<UserStore>();
             services.AddAuthentication("Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
         }
@@ -36,7 +37,7 @@ namespace BasicClientServerApp.Server
             app.UseRouting();
 
             app.UseAuthentication();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
