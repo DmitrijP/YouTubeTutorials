@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using BasicClientServerApp.Server.Stores;
 using BasicClientServerApp.Server.Mappers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication;
+using BasicClientServerApp.Server.Authentication;
 
 namespace BasicClientServerApp.Server
 {
@@ -22,7 +24,8 @@ namespace BasicClientServerApp.Server
             services.AddControllers();
             services.AddSingleton<EmployeeStore>();
             services.AddScoped<EmployeeMapper>();
-            string connectionString = Configuration.GetConnectionString("DefaultConnectionString");
+            services.AddAuthentication("Basic")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,6 +34,8 @@ namespace BasicClientServerApp.Server
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

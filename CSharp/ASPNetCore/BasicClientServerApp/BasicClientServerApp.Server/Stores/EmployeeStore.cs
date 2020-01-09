@@ -11,25 +11,32 @@ namespace BasicClientServerApp.Server.Stores
         public EmployeeStore()
         {
             _employeeStore = new List<EmployeeEntity>();
-            var randoTron = new Random();
+            var randoTron = new Random((int)DateTime.Now.Ticks / DateTime.Now.Millisecond);
             var companyNames = new string[]
-            { "CompA", "CompC", "CompB"};
+            { "CompA", "CompB","CompC","CompD"};
             var firstNames = new string[]
-            { "Savannah", "Pearl", "Ava", "Scarlet", "Mary", "Gordon" };
+            { "Savannah", "Pearl", "Ava", "Scarlet", "Mary", "Gordon", "Donald", "Vader" };
             var lastNames = new string[]
-            { "Hunt", "Cook", "Mcdonald", "Hunter", "Hayes", "Freeman", "Williams" };
+            { "Hunt", "Cook", "Mcdonald", "Hunter", "Hayes", "Freeman", "Williams", "Top" };
+            var positions = new string[]
+            { "Agent", "TeamLeader", "Leader", "LocationLeader", "Developer"};
+            var cities = new string[]
+            { "Mannheim", "Karlsruhe", "Frankfurt", "Berlin", "Köln"};
             for (int i = 0; i < 20; i++)
             {
-                var firstName = firstNames[randoTron.Next(0, 5)];
-                var lastName = lastNames[randoTron.Next(0, 7)];
+                var firstName = firstNames[randoTron.Next(0, 7)];
+                var lastName = lastNames[randoTron.Next(0, 8)];
                 _employeeStore.Add(new EmployeeEntity
                 {
                     Birthday = DateTime.Now + TimeSpan.FromDays(randoTron.Next(0, 1000)),
                     Id = i,
-                    CompanyName = companyNames[randoTron.Next(0, 2)],
+                    CompanyName = companyNames[randoTron.Next(0, 3)],
                     FirstName = firstName,
                     LastName = lastName,
-                    UserName = $"{lastName}{firstName[0]}"
+                    UserName = $"{lastName}{firstName[0]}",
+                    City = cities[randoTron.Next(0, 5)],
+                    Position = positions[randoTron.Next(0, 5)]
+
                 });
             }
         }

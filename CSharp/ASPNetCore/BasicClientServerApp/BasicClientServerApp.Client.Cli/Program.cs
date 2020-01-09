@@ -51,7 +51,7 @@ namespace BasicClientServerApp.Client.Cli
             }
             if (command == "all")
             {
-                result = await employeeService.GetAllEmployeeAsync();
+                //result = await employeeService.GetAllEmployeeAsync();
             }
             if (command == "create")
             {

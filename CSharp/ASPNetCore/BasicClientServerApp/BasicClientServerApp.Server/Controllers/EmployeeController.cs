@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BasicClientServerApp.Server.Entities;
-using BasicClientServerApp.Server.Entities.Employee;
+using System.Collections.Generic;
+using BasicClientServerApp.Server.Stores;
 using BasicClientServerApp.Server.Mappers;
 using BasicClientServerApp.Server.Models.Employee;
-using BasicClientServerApp.Server.Stores;
-using System.Collections.Generic;
-using System.Linq;
+using BasicClientServerApp.Server.Entities.Employee;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BasicClientServerApp.Server.Controllers
 {

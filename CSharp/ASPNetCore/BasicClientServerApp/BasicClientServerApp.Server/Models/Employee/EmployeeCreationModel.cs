@@ -8,5 +8,7 @@ namespace BasicClientServerApp.Server.Models.Employee
         public string LastName { get; set; }
         public string CompanyName { get; set; }
         public DateTime Birthday { get; set; }
+        public string Position { get; set; }
+        public string City { get; set; }
     }
 }

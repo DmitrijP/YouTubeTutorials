@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using BasicClientServerApp.Server.Entities.Employee;
-using BasicClientServerApp.Server.Models.Employee;
 using System.Collections.Generic;
+using BasicClientServerApp.Server.Models.Employee;
+using BasicClientServerApp.Server.Entities.Employee;
 
 namespace BasicClientServerApp.Server.Mappers
 {
@@ -13,8 +13,12 @@ namespace BasicClientServerApp.Server.Mappers
             {
                 Id = entity.Id,
                 CompanyName = entity.CompanyName,
-                Name = entity.FirstName + " " + entity.LastName,
-                UserName = entity.UserName
+                FirstName = entity.FirstName ,
+                LastName = entity.LastName,
+                UserName = entity.UserName,
+                Birthday = entity.Birthday,
+                City = entity.City,
+                Position = entity.Position
             };
         }
         public IEnumerable<EmployeeQueryModel> Map(IEnumerable<EmployeeEntity> entityList)
@@ -35,7 +39,9 @@ namespace BasicClientServerApp.Server.Mappers
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Birthday= model.Birthday,
-                UserName = userName
+                UserName = userName,
+                City =   model.City,
+                Position = model.Position
             };
         }
 
