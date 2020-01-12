@@ -7,6 +7,9 @@ using BasicClientServerApp.Server.Mappers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication;
 using BasicClientServerApp.Server.Authentication;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using BasicClientServerApp.Server.Authorization;
 
 namespace BasicClientServerApp.Server
 {
@@ -27,6 +30,12 @@ namespace BasicClientServerApp.Server
             services.AddScoped<UserStore>();
             services.AddAuthentication("Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
+
+            services.AddSingleton<IAuthorizationHandler, OneOrMoreRolesAuthorizationHandler>();
+            services.AddAuthorization(options => 
+                options.AddPolicy("OneOrMoreReadGroupPolicy", policy => 
+                    policy.Requirements.Add(new OneOrMoreRoleAuthorizationRequirenment(new string[] { "RSXG-BCSApp-Read-Prod", "RSXG-BCSApp-Read-Test", "RSXG-BCSApp-Read-Dev" } ))
+                ));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

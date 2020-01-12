@@ -1,6 +1,5 @@
 ﻿using BasicClientServerApp.Server.Entities.Users;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,14 +13,14 @@ namespace BasicClientServerApp.Server.Stores
             {
                 Id = 1,
                 Birthday = DateTime.Now,
-                City = "Mannheim",
+                City = "Bruchsal",
                 CompanyName = "CompanyA",
                 FirstName = "Dmitrij",
                 LastName = "Patuk",
                 Password = "SuperPassword",
                 Position = "IT",
                 UserName = "PatukD",
-                Roles = "UserAdministrator:UserManager:UserReader"
+                Roles = "UserAdministrator:UserManager:RSXG-BCSApp-Read-Test"
             }  ,
              new UserProfileEntity
             {

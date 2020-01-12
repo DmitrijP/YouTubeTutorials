@@ -23,7 +23,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "UserReader")]
+        [Authorize(Policy = "OneOrMoreReadGroupPolicy")]
         [Route("{action}")]
         public IEnumerable<EmployeeQueryModel> GetAll()
         {
@@ -32,7 +32,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "UserReader")]
+        [Authorize(Policy = "OneOrMoreReadGroupPolicy")] 
         [Route("{action}/{userName}")]
         public IEnumerable<EmployeeQueryModel> Find(string userName)
         {
@@ -41,7 +41,7 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "UserReader")]
+        [Authorize(Policy = "OneOrMoreReadGroupPolicy")]
         [Route("{action}/{id:int}")]
         public EmployeeQueryModel Find(int id)
         {
