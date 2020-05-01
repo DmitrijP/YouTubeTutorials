@@ -1,0 +1,21 @@
+﻿<Window x:Class="MVVMTutorials.WPFui.Views.SecondaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVMTutorials.WPFui.Views"
+        mc:Ignorable="d"
+        Title="SecondaryWindow" Height="450" Width="800">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="MVVM Tutorial - Secondary Window" FontSize="16" />
+        <TextBlock Grid.Row="1" Text="{Binding MainTextBox, FallbackValue=InitialWert}" FontSize="16" Background="WhiteSmoke"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Margin="5">
+            <Button Padding="5" Margin="5" Command="{Binding SendMessageToMainWindowCommand}" Content="Send Message Main Window"/>
+        </StackPanel>
+    </Grid>
+</Window>

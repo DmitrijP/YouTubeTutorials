@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="MVVMTutorials.WPFui.Views.ProfileControls.SearchField"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMTutorials.WPFui.Views.ProfileControls"
+             mc:Ignorable="d" 
+           >
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Content="{Binding SearchFieldName, FallbackValue=Suchfeld}" Margin="2" MinWidth="100"/>
+        <TextBox Grid.Column="1" Text="{Binding SearchValue, FallbackValue='Bitte nach etwas suchen'}"  MinWidth="100" VerticalContentAlignment="Center" Margin="2"/>
+        <ComboBox Grid.Column="2" ItemsSource="{Binding PossibleSearchOperators}" SelectedItem="{Binding SelectedSearchOperator}" SelectedIndex="0" DisplayMemberPath="Name" MinWidth="100" Margin="2"/>
+        <Button Grid.Column="3" Content="X" Width="30" Margin="2" Command="{Binding ClearSearchCommand}"/>
+    </Grid>
+</UserControl>
