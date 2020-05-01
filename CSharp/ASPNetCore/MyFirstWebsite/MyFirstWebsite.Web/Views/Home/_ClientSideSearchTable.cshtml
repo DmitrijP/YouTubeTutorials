@@ -1,0 +1,52 @@
+﻿@model MyFirstWebsite.Web.Models.Home.IndexModel
+
+<div class="container">
+    <table id="employeeTable" class="table table-dark">
+        <thead>
+            <tr>
+                <th data-sortDirection="asc" data-sort="true" data-sortType="int">Id</th>
+                <th data-sortDirection="asc" data-sort="true">Benutzer</th>
+                <th data-sortDirection="asc" data-sort="true">Vorname</th>
+                <th data-sortDirection="asc" data-sort="true">Nachname</th>
+                <th data-sortDirection="asc" data-sort="true" data-sortType="custom">Geburtstag</th>
+                <th data-sortDirection="asc" data-sort="true">Stadt</th>
+                <th data-sortDirection="asc" data-sort="true">Titel</th>
+                <th data-sortDirection="asc" data-sort="true">Firma</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th><input data-index="0" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="1" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="2" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="3" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="4" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="5" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="6" type="text" class="form-control" placeholder="search" /></th>
+                <th><input data-index="7" type="text" class="form-control" placeholder="search" /></th>
+                <th>
+                    <button class="btn btn-outline-success" data-toggle="modal" data-target="#createEmployeeModal">
+                        +
+                    </button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model.EmployeeList)
+            {
+                <tr>
+                    <td>@employee.Id</td>
+                    <td>@employee.UserName</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td data-sortKey="@employee.Birthday.ToString("yyyy.MM.dd")">@employee.Birthday.ToString("dd. MMMM yyyy")</td>
+                    <td>@employee.City</td>
+                    <td>@employee.Position</td>
+                    <td>@employee.CompanyName</td>
+                    <th>
+                        <button class="btn btn-outline-danger" onclick="DeleteEmployee('@employee.Id')">Delete</button>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

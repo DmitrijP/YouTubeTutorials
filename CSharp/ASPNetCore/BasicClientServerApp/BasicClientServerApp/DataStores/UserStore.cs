@@ -1,11 +1,11 @@
-﻿using BasicClientServerApp.Server.Entities.Users;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BasicClientServerApp.Entities;
 
-namespace BasicClientServerApp.Server.Stores
+namespace BasicClientServerApp.DataStores
 {
-    public class UserStore
+    public class UserStore : IUserStore
     {
         UserProfileEntity[] myUserDataBase = new UserProfileEntity[]
         {

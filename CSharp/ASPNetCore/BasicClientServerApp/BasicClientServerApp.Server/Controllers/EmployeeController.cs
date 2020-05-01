@@ -5,10 +5,11 @@ using BasicClientServerApp.Server.Mappers;
 using BasicClientServerApp.Server.Models.Employee;
 using BasicClientServerApp.Server.Entities.Employee;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 
 namespace BasicClientServerApp.Server.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("{controller}")]
     public class EmployeeController : ControllerBase
@@ -23,7 +24,9 @@ namespace BasicClientServerApp.Server.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "OneOrMoreReadGroupPolicy")]
+        //[Authorize(Policy = "OneOrMoreReadGroupPolicy")]
+
+        [EnableCors("MyCorsPolicy")]
         [Route("{action}")]
         public IEnumerable<EmployeeQueryModel> GetAll()
         {

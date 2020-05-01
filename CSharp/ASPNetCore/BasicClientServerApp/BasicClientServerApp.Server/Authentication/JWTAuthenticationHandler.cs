@@ -6,17 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace BasicClientServerApp.Server.Authentication
 {
-    public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+    public class JWTAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
         private readonly UserStore userStore;
 
-        public BasicAuthenticationHandler(
+        public JWTAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> optionsMonitor, ILoggerFactory logger,
             UrlEncoder encoder, ISystemClock systemClock, UserStore userStore)
              : base(optionsMonitor, logger, encoder, systemClock)
@@ -62,7 +63,18 @@ namespace BasicClientServerApp.Server.Authentication
             return AuthenticateResult.Success(ticket);
 
         }
+
+
+        string GenerateHash(string text, string key)
+        {
+            var encoding = new ASCIIEncoding();
+            var textBytes = encoding.GetBytes(text);
+            var keyBytes = encoding.GetBytes(key);
+            byte[] hasBytes;
+            using var hash = new System.Security.Cryptography.HMACSHA256(keyBytes);
+            hasBytes = hash.ComputeHash(textBytes);
+            return BitConverter.ToString(hasBytes).Replace("-", "").ToLower();
+        }
+
     }
-
-
 }

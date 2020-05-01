@@ -12,7 +12,7 @@ namespace BasicClientServerApp.Server.Stores
         List<EmployeePermissionEntity> _employeePermissionTable;
         List<PermissionEntity> _permissionTable;
 
-        public EmployeePermissionStore(EmployeeStore store)
+        public EmployeePermissionStore()
         {
             _permissionTable = new List<PermissionEntity>
            {
@@ -39,16 +39,16 @@ namespace BasicClientServerApp.Server.Stores
            };
             var randoTron = new Random((int)DateTime.Now.Ticks / DateTime.Now.Millisecond);
 
-            foreach (var employee in store.GetAll())
+            foreach (var employee in new EmployeeStore().GetAll())
             {
-                var randomPermission = _permissionTable[randoTron.Next(0, _permissionTable.Count - 1)].Id;
-                _employeePermissionTable.Add(
-                    new EmployeePermissionEntity
-                    {
-                        EmployeeId = employee.Id,
-                        PermissionId = randomPermission
-                    }
-                    );
+                //var randomPermission = _permissionTable[randoTron.Next(0, _permissionTable.Count - 1)].Id;
+                //_employeePermissionTable.Add(
+                //    new EmployeePermissionEntity
+                //    {
+                //        EmployeeId = employee.Id,
+                //        PermissionId = randomPermission
+                //    }
+                //    );
             }
         }
 

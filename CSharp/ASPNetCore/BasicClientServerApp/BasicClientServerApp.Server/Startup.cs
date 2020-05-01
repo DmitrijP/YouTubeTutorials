@@ -28,6 +28,7 @@ namespace BasicClientServerApp.Server
             services.AddSingleton<EmployeeStore>();
             services.AddScoped<EmployeeMapper>();
             services.AddScoped<UserStore>();
+            services.AddScoped<EmployeePermissionStore>();
             services.AddAuthentication("Basic")
                 .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("Basic", null);
 
@@ -36,6 +37,16 @@ namespace BasicClientServerApp.Server
                 options.AddPolicy("OneOrMoreReadGroupPolicy", policy => 
                     policy.Requirements.Add(new OneOrMoreRoleAuthorizationRequirenment(new string[] { "RSXG-BCSApp-Read-Prod", "RSXG-BCSApp-Read-Test", "RSXG-BCSApp-Read-Dev" } ))
                 ));
+            services.AddScoped<IClaimsTransformation, ClaimS>();
+
+            services.AddCors(
+                options =>
+                {
+                    options.AddPolicy("MyCorsPolicy", builder =>
+                    {
+                        builder.WithOrigins("file:///C:/Users/dmitr/Documents/PlatformIO/Projects/JavascriptTutorials/*");
+                    });
+                });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -44,6 +55,7 @@ namespace BasicClientServerApp.Server
                 app.UseDeveloperExceptionPage();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthentication();
             app.UseAuthorization();

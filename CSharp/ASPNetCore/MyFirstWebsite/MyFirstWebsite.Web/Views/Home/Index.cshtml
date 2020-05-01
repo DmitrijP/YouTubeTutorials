@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Hello World";
+}
+
+@model MyFirstWebsite.Web.Models.Home.IndexModel
+
+@await Component.InvokeAsync("Profile", 21)
+
+<partial name="_ClientSideSearchTable" model="@Model"/>
+
+<partial name="_ServerSideSearchTable"/>
+
+<div class="modal" tabindex="-1" role="dialog" id="createEmployeeModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Bitte die Daten des zu erstellendem Mitarbeiters angeben.</p>
+                <input placeholder="Vorname" class="form-control" type="text" id="firstName"/>
+                <input placeholder="Nachname" class="form-control" type="text" id="lastName"/>
+                <input placeholder="Stadt" class="form-control" type="text" id="city"/>
+                <input placeholder="Titel" class="form-control" type="text" id="position"/>
+                <input placeholder="Firma" class="form-control" type="text" id="copanyName"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="CreateEmployee()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+   <script src="~/js/Home/index.js"></script>
+   <script src="~/js/Home/sortTableFunctions.js"></script>
+}
