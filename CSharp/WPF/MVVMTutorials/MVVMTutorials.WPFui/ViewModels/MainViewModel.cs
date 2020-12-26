@@ -4,17 +4,21 @@ using MVVMTutorials.WPFui.Entities;
 using System.Collections.ObjectModel;
 using MVVMTutorials.WPFui.DataStores;
 using System.Collections.Generic;
+using MVVMTutorials.WPFui.Models;
+using System.Linq;
 
 namespace MVVMTutorials.WPFui.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
         private readonly IEmployeeStore _employeeStore;
+        private readonly IMessenger _messenger;
 
-        public MainViewModel(IEmployeeStore employeeStore)
+        public MainViewModel(IEmployeeStore employeeStore, IMessenger messenger)
         {
             InitializeCommands();
             _employeeStore = employeeStore ?? throw new System.ArgumentNullException(nameof(employeeStore));
+            _messenger = messenger;
             var stringSearchOperators = new List<SearchOperatorModel>
             {
                 new SearchOperatorModel
@@ -118,7 +122,6 @@ namespace MVVMTutorials.WPFui.ViewModels
 
         public List<SearchFieldViewModel> SearchFieldViewModels { get; set; }
 
-
         private void InitializeCommands()
         {
             OpenSecondWindowCommand = new GenericCommand(
@@ -126,17 +129,15 @@ namespace MVVMTutorials.WPFui.ViewModels
                 {
                     App.ViewFactory.OpenWindow<SecondaryViewModel>();
                 });
-            SendMessageToSecondWindowCommand = new GenericCommand(
-                () =>
-                {
-                });
+            SendMessageToSecondWindowCommand = new GenericCommand(() => {
+                _messenger.Send<EmployeeEntity>(_employeeCollection?.FirstOrDefault());
+            });
             GetEmployeeListCommand = new GenericCommand(
                 async () =>
                 {
                     var employeeList = await _employeeStore.GetAll();
                     EmployeeCollection = new ObservableCollection<EmployeeEntity>(employeeList);
-                }
-                );
+                });
         }
 
         public ICommand OpenSecondWindowCommand { get; set; }
