@@ -4,33 +4,35 @@
 
 @if (EmployeeList == null)
 {
-    <p class="alert-info">Loading...</p>
+    <p class="alert-info">Loading employee list...</p>
 }
 else
 {
      <table class="table table-striped">
          <thead>
              <tr>
-                 <td>Employee ID</td>
-                 <td>Firstname</td>
-                 <td>Lastname</td>
-                 <td>Birthdate</td>
-                 <td>Action</td>
+                 <th></th>
+                 <th>Username</th>
+                 <th>Firstname</th>
+                 <th>Lastname</th>
+                 <th>Birthdate</th>
+                 <th>Action</th>
              </tr>
          </thead>
          <tbody>
              @foreach (var employee in EmployeeList)
              {
 
-                 <tr>
-                     <td>@employee.EmployeeId</td>
-                     <td>@employee.FirstName</td>
-                     <td>@employee.LastName</td>
-                     <td>@employee.Birthday</td>
-                     <td>
-                         <a href="@($"employee-details/{employee.EmployeeId}")" class="btn btn-outline-primary">Details</a>
-                     </td>
-                 </tr>
+             <tr>
+                 <td><img src="@employee.Picture.Thumbnail" class="img-fluid" /></td>
+                 <td>@employee.Login.Username</td>
+                 <td>@employee.Name.First</td>
+                 <td>@employee.Name.Last</td>
+                 <td>@employee.Dob.Date</td>
+                 <td>
+                     <a href="@($"employee-details/{employee.Login.Uuid}")" class="btn btn-outline-primary">Details</a>
+                 </td>
+             </tr>
              }
          </tbody>
      </table>

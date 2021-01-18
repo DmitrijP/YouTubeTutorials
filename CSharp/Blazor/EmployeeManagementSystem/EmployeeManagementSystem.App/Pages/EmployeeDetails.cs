@@ -1,8 +1,6 @@
 ﻿using EmployeeManagementSystem.Shared;
 using EmployeeManagementSystem.Shared.Models;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,15 +10,16 @@ namespace EmployeeManagementSystem.App.Pages
     {
         [Parameter]
         public string Id { get; set; }
+        [Inject]
+        public EmployeeStore EmployeeStore { get; set; }
 
         public Employee Employee { get; set; } = new Employee();
 
-        protected override Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
-            var e = new EmployeeFactory();
-            e.InitializeEmployeeList();
-            Employee = e.EmployeeList.FirstOrDefault(e => e.EmployeeId == int.Parse(Id));
-            return base.OnInitializedAsync();
+            Employee = (await EmployeeStore.SelectEmployeeList())
+                .FirstOrDefault(e => e.Login.Uuid == Id);
+            await base.OnInitializedAsync();
         }
     }
 }

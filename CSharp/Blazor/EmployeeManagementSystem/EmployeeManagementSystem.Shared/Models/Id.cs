@@ -1,8 +1,8 @@
 ﻿namespace EmployeeManagementSystem.Shared.Models
 {
-    public class Country
+    public class Id
     {
-        public int CountryId { get; set; }
         public string Name { get; set; }
+        public string Value { get; set; }
     }
 }

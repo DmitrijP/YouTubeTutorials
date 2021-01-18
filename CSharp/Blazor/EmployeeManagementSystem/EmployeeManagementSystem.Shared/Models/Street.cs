@@ -1,8 +1,8 @@
 ﻿namespace EmployeeManagementSystem.Shared.Models
 {
-    public class Profession
+    public class Street
     {
-        public int ProfessionId { get; set; }
         public string Name { get; set; }
+        public int Number { get; set; }
     }
 }
