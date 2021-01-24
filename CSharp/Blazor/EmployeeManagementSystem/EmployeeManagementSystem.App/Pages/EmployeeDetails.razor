@@ -4,6 +4,8 @@
 <h3>@Employee.Name.First @Employee.Name.Last</h3>
 <img src="@Employee.Picture.Large" class="img-fluid" width="300" />
 <h4>Login information</h4>
+
+<a href="@($"edit-employee/{Employee.Login.Uuid}")" class="btn btn-outline-primary">Edit Employee</a>
 <table class="table table-striped">
     <tbody>
         <tr>
