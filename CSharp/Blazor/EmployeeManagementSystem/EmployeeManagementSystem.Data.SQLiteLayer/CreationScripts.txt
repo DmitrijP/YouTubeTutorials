@@ -1,0 +1,73 @@
+﻿CREATE TABLE IF NOT EXISTS Name(
+    Id INTEGER,
+    Title VARCHAR (256),
+    First VARCHAR (256),
+    Last VARCHAR (256),
+    PRIMARY KEY(
+        Id ASC
+    )
+);
+
+CREATE TABLE IF NOT EXISTS Picture(
+    Id INTEGER,
+    Large VARCHAR (256),
+    Medium VARCHAR (256),
+    Thumbnail VARCHAR (256),
+    PRIMARY KEY(
+        Id ASC
+    )
+); 
+
+CREATE TABLE IF NOT EXISTS Login(
+    Uuid VARCHAR (256),
+    Username VARCHAR (256),
+    Password VARCHAR (256),
+    Salt VARCHAR (256),
+    SHA256 VARCHAR (256),
+    PRIMARY KEY(
+        Uuid ASC
+    )
+);
+
+CREATE TABLE IF NOT EXISTS Street(
+    Id INTEGER,
+    [Name] VARCHAR (255),
+    [Number] INTEGER,
+    PRIMARY KEY(
+        Id ASC
+    )
+);
+
+CREATE TABLE IF NOT EXISTS Location(
+    Id INTEGER,
+    StreetId INTEGER,
+    Country VARCHAR (255),
+    State VARCHAR (255),
+    Postcode VARCHAR (255),
+    City VARCHAR (255),
+    PRIMARY KEY(
+        Id ASC
+    ),
+    FOREIGN KEY(StreetId) REFERENCES Street(Id)
+);
+
+CREATE TABLE IF NOT EXISTS Employee (
+    Id INTEGER,
+    NameId INTEGER,
+    PictureId INTEGER,
+    LoginUuid NVARCHAR(255),
+    LocationId INTEGER,
+    Email VARCHAR (256),
+    Phone VARCHAR (32),
+    Cell VARCHAR (32),
+    Gender VARCHAR (32),
+    Nat VARCHAR (32),
+    PRIMARY KEY(
+        Id ASC
+    ),
+    FOREIGN KEY(NameId) REFERENCES Name(Id),
+    FOREIGN KEY(PictureId) REFERENCES Picture(Id),
+    FOREIGN KEY(LoginUuid) REFERENCES Login(Uuid),
+    FOREIGN KEY(LocationId) REFERENCES Location(Id),
+    FOREIGN KEY(NameId) REFERENCES Name(Id)
+);

@@ -7,6 +7,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.Shared", "EmployeeManagementSystem.Shared\EmployeeManagementSystem.Shared.csproj", "{B0D69477-10F9-4A37-83FC-BF0329069208}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.Data.Shared", "EmployeeManagementSystem.Data.Shared\EmployeeManagementSystem.Data.Shared.csproj", "{957AE167-16EF-499F-8DB7-3771C18A1E76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.Data.SQLiteLayer", "EmployeeManagementSystem.Data.SQLiteLayer\EmployeeManagementSystem.Data.SQLiteLayer.csproj", "{0A59E1D1-7F3D-43C2-990C-CD84768D258C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.Data.Bootstrapper", "EmployeeManagementSystem.Data.Bootstrapper\EmployeeManagementSystem.Data.Bootstrapper.csproj", "{735E105C-11D7-4705-8D1F-87430E1F98DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.Data.Bootstrapper.CLI", "EmployeeManagementSystem.Data.Bootstrapper.CLI\EmployeeManagementSystem.Data.Bootstrapper.CLI.csproj", "{347FF5E9-11A0-42E8-9FD6-4EC95EFE1690}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.ReSTapi", "EmployeeManagementSystem.ReSTapi\EmployeeManagementSystem.ReSTapi.csproj", "{2E554E0A-4489-444E-AD3C-77486CE50715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,26 @@ Global
 		{B0D69477-10F9-4A37-83FC-BF0329069208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0D69477-10F9-4A37-83FC-BF0329069208}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0D69477-10F9-4A37-83FC-BF0329069208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{957AE167-16EF-499F-8DB7-3771C18A1E76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{957AE167-16EF-499F-8DB7-3771C18A1E76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{957AE167-16EF-499F-8DB7-3771C18A1E76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{957AE167-16EF-499F-8DB7-3771C18A1E76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A59E1D1-7F3D-43C2-990C-CD84768D258C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A59E1D1-7F3D-43C2-990C-CD84768D258C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A59E1D1-7F3D-43C2-990C-CD84768D258C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A59E1D1-7F3D-43C2-990C-CD84768D258C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735E105C-11D7-4705-8D1F-87430E1F98DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735E105C-11D7-4705-8D1F-87430E1F98DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735E105C-11D7-4705-8D1F-87430E1F98DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735E105C-11D7-4705-8D1F-87430E1F98DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347FF5E9-11A0-42E8-9FD6-4EC95EFE1690}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347FF5E9-11A0-42E8-9FD6-4EC95EFE1690}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347FF5E9-11A0-42E8-9FD6-4EC95EFE1690}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347FF5E9-11A0-42E8-9FD6-4EC95EFE1690}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E554E0A-4489-444E-AD3C-77486CE50715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E554E0A-4489-444E-AD3C-77486CE50715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E554E0A-4489-444E-AD3C-77486CE50715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E554E0A-4489-444E-AD3C-77486CE50715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

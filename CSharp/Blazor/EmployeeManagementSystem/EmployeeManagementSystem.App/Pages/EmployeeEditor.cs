@@ -10,8 +10,8 @@ namespace EmployeeManagementSystem.App.Pages
     {
         [Parameter]
         public string Id { get; set; }
-        [Inject]
-        public EmployeeStore EmployeeStore { get; set; }
+        //[Inject]
+        //public EmployeeStore EmployeeStore { get; set; }
 
         public Employee Employee { get; set; } = InitializeNullEmployee();
 
@@ -19,8 +19,8 @@ namespace EmployeeManagementSystem.App.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Employee = (await EmployeeStore.SelectEmployeeList())
-                .FirstOrDefault(e => e.Login.Uuid == Id);
+            //Employee = (await EmployeeStore.SelectEmployeeList())
+            //    .FirstOrDefault(e => e.Login.Uuid == Id);
             await base.OnInitializedAsync();
         }
 

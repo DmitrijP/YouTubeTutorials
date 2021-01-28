@@ -8,14 +8,14 @@ namespace EmployeeManagementSystem.App.Pages
 {
     public partial class EmployeeManagementOverview
     {
-        [Inject]
-        public EmployeeStore EmployeeStore { get; set; }
+        //[Inject]
+        //public EmployeeStore EmployeeStore { get; set; }
 
         public IEnumerable<Employee> EmployeeList { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            EmployeeList = await EmployeeStore.SelectEmployeeList();
+            //EmployeeList = await EmployeeStore.SelectEmployeeList();
             await base.OnInitializedAsync();
         }
     }
