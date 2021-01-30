@@ -1,0 +1,46 @@
+﻿@page "/employee-management-overview"
+
+<h3>Employee Management Overview</h3>
+
+<AuthorizeView Roles="Blazor">
+    <Authorized>
+        @if (EmployeeList == null)
+        {
+            <p class="alert-info">Loading employee list...</p>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Username</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Birthdate</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in EmployeeList)
+                    {
+
+                        <tr>
+                            <td>@*<img src="@employee.Picture.Thumbnail" class="img-fluid" />*@</td>
+                            <td>@employee.Email</td>
+                            <td>@employee.Cell</td>
+                            <td>@employee.Nat</td>
+                            <td>@employee.Phone</td>
+                            <td>
+                                @*<a href="@($"employee-details/{employee.Login.Uuid}")" class="btn btn-outline-primary">Details</a>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </Authorized>
+    <NotAuthorized>
+          <label class="alert-warning">You are not authorized to see this stuff</label>
+    </NotAuthorized>
+</AuthorizeView>

@@ -1,0 +1,25 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<a class="btn btn-outline-primary" @onclick="Click">Get Email</a>
+<label>@LabelText</label>
+
+
+@code {
+    private string LabelText {get;set;}
+    [Inject]
+    public Services.IEmployeeService EmployeeService { get; set; }
+
+    async Task Click()
+    {
+        var data = await EmployeeService.GetAll();
+        foreach (var employee in data)
+        {
+            LabelText += $"{Environment.NewLine}{employee.Email}";
+        }
+    }
+
+}
