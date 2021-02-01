@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeManagementSystem.ADLibs\EmployeeManagementSystem.ADLibs.csproj" />
+    <ProjectReference Include="..\EmployeeManagementSystem.Data.Shared\EmployeeManagementSystem.Data.Shared.csproj" />
+    <ProjectReference Include="..\EmployeeManagementSystem.Data.SQLiteLayer\EmployeeManagementSystem.Data.SQLiteLayer.csproj" />
+  </ItemGroup>
+
+</Project>
