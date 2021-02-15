@@ -2,7 +2,7 @@
 
 Dieses Verzeichnis enthällt den Code für meine Blazor Youtube Tutorials.
 
-Link zu der Playlist: https://youtube.com/playlist?list=PLtFURTtAiZIlOAq1GhWS-TbynYBZRJh5H
+Link zu der [Playlist](https://youtube.com/playlist?list=PLtFURTtAiZIlOAq1GhWS-TbynYBZRJh5H)
 
 Das Tutorial besteht aktuell aus 8 Teilen.
 Links führen direkt zu den Commits
