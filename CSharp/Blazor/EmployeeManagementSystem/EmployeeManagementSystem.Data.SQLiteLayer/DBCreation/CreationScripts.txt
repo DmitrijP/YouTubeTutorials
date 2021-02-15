@@ -1,0 +1,36 @@
+﻿CREATE TABLE IF NOT EXISTS Employee (
+    Id INTEGER,
+    Username VARCHAR (256),
+    TemporaryPassword VARCHAR (256),
+    Title VARCHAR (256),
+    FirstName VARCHAR (256),
+    LastName VARCHAR (256),
+    Email VARCHAR (256),
+    Phone VARCHAR (32),
+    Deleted DATETIME NULL,
+    LastChange DATETIME NULL,
+    LastExport DATETIME NULL,
+    PRIMARY KEY(
+        Id ASC
+    ),
+);
+
+CREATE TABLE IF NOT EXISTS Group (
+    Id INTEGER,
+    Name NVARCHAR(256),
+    Description NVARCHAR(256),
+    LastChange DATETIME NULL,
+    LastExport DATETIME NULL,
+    PRIMARY KEY(
+        Id ASC
+    ),
+)
+
+CREATE TABLE IF NOT EXISTS GroupMembership(
+   Id INTEGER,
+   EmployeeId INTEGER,
+   GroupId INTEGER,
+   PRIMARY KEY(
+        Id ASC
+    ),
+)

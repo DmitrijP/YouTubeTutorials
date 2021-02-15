@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.ServerApp", "EmployeeManagementSystem.ServerApp\EmployeeManagementSystem.ServerApp.csproj", "{1CF1F62E-4F79-4EF5-861A-C73B7910AD9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.ADLibs", "EmployeeManagementSystem.ADLibs\EmployeeManagementSystem.ADLibs.csproj", "{C4D2D137-3DCA-4EC0-BB82-C0F27ABE1613}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.ADLibs", "EmployeeManagementSystem.ADLibs\EmployeeManagementSystem.ADLibs.csproj", "{C4D2D137-3DCA-4EC0-BB82-C0F27ABE1613}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.ADConsole", "EmployeeManagementSystem.ADConsole\EmployeeManagementSystem.ADConsole.csproj", "{149C412C-EE4D-4A7C-BE10-A04BC8D521BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManagementSystem.ADConsole", "EmployeeManagementSystem.ADConsole\EmployeeManagementSystem.ADConsole.csproj", "{149C412C-EE4D-4A7C-BE10-A04BC8D521BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagementSystem.ADLibs.Interfaces", "EmployeeManagementSystem.ADLibs.Interfaces\EmployeeManagementSystem.ADLibs.Interfaces.csproj", "{1C2CFE57-88A0-489B-B132-743A22612228}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{149C412C-EE4D-4A7C-BE10-A04BC8D521BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{149C412C-EE4D-4A7C-BE10-A04BC8D521BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{149C412C-EE4D-4A7C-BE10-A04BC8D521BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C2CFE57-88A0-489B-B132-743A22612228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C2CFE57-88A0-489B-B132-743A22612228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C2CFE57-88A0-489B-B132-743A22612228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C2CFE57-88A0-489B-B132-743A22612228}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

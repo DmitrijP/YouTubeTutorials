@@ -15,6 +15,20 @@ namespace EmployeeManagementSystem.ServerApp.Services
             _httpClient = httpClient;
         }
 
+        public async Task CreateEmployee(Employee e)
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(e);
+            var body = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+            var result = await _httpClient.PostAsync($"Create", body);
+            result.EnsureSuccessStatusCode();
+        }
+
+        public async Task GenerateADProfile(Employee e)
+        {
+            var result = await _httpClient.PostAsync($"GenerateADProfile/{e.Id}", null);
+            result.EnsureSuccessStatusCode();
+        }
+
         public async Task<IEnumerable<Employee>> GetAll()
         {
             var result = await _httpClient.GetStreamAsync($"Employee");

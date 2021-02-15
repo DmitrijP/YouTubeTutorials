@@ -28,9 +28,9 @@ namespace EmployeeManagementSystem.Data.Bootstrapper
                 var result = await _httpClient.GetAsync(RequestPath);
                 if (result.IsSuccessStatusCode)
                 {
-                    var stringResult = await result.Content.ReadAsStringAsync();
-                    var deserializationResult = JsonConvert.DeserializeObject<EmployeeRequestResult>(stringResult);
-                    _internalStorage = deserializationResult.Results;
+                    //var stringResult = await result.Content.ReadAsStringAsync();
+                    //var deserializationResult = JsonConvert.DeserializeObject<EmployeeRequestResult>(stringResult);
+                    //_internalStorage = deserializationResult.Results;
                 }
                 else
                 {

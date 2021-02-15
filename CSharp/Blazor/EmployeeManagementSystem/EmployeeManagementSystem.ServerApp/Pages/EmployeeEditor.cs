@@ -1,4 +1,5 @@
-﻿using EmployeeManagementSystem.Shared;
+﻿using EmployeeManagementSystem.ServerApp.Services;
+using EmployeeManagementSystem.Shared;
 using EmployeeManagementSystem.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using System.Linq;
@@ -9,38 +10,47 @@ namespace EmployeeManagementSystem.ServerApp.Pages
     public partial class EmployeeEditor
     {
         [Parameter]
-        public string Id { get; set; }
-        //[Inject]
-        //public EmployeeStore EmployeeStore { get; set; }
-
-        public Employee Employee { get; set; } = InitializeNullEmployee();
-
-        public string InvalidValidationMessage { get; set; }
+        public int? Id { get; set; }
+        [Inject]
+        public IEmployeeService EmployeeService { get; set; }
+        private Employee Employee { get; set; }
+        private bool NoEmployeeFound { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            //Employee = (await EmployeeStore.SelectEmployeeList())
-            //    .FirstOrDefault(e => e.Login.Uuid == Id);
+            if (Id.HasValue)
+            {
+                Employee = (await EmployeeService.GetAll())
+                    .FirstOrDefault(e => e.Id == Id);
+                if(Employee == null)
+                {
+                    NoEmployeeFound = true;
+                }
+            }
+            else
+            {
+                Employee = new Employee();
+            }
             await base.OnInitializedAsync();
         }
 
-        private void HandleValidSubmit()
+        private async Task HandleValidSubmit()
         {
-            InvalidValidationMessage = "Alles Richtig!!!";
+            if (Id.HasValue)
+            {
+                //await EmployeeService.UpdateEmployee(Employee);
+            }
+            else
+            {
+                await EmployeeService.CreateEmployee(Employee);
+                //Navigate to Details
+            }
         }
 
         private void HandleInvalidSubmit()
         {
-            InvalidValidationMessage = "Prüfe dein gedöns";
         }
 
 
-        private static Employee InitializeNullEmployee()
-        {
-            return new Employee
-            {
-                Name = new Name { },
-            };
-        }
     }
 }

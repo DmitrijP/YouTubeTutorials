@@ -8,4 +8,8 @@
     <PackageReference Include="System.DirectoryServices.AccountManagement" Version="5.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EmployeeManagementSystem.ADLibs.Interfaces\EmployeeManagementSystem.ADLibs.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>

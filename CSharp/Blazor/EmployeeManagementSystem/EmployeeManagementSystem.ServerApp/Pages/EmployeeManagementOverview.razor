@@ -13,12 +13,15 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Username</th>
+                        <th>Title</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
-                        <th>Birthdate</th>
-                        <th>Action</th>
+                        <th>Username</th>
+                        <th>Temp Password</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Last Change</th>
+                        <th>Last AD Export</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,13 +29,17 @@
                     {
 
                         <tr>
-                            <td>@*<img src="@employee.Picture.Thumbnail" class="img-fluid" />*@</td>
+                            <td>@employee.Title</td>
+                            <td>@employee.FirstName</td>
+                            <td>@employee.LastName</td>
+                            <td>@employee.Username</td>
+                            <td>@employee.TemporaryPassword</td>
                             <td>@employee.Email</td>
-                            <td>@employee.Cell</td>
-                            <td>@employee.Nat</td>
                             <td>@employee.Phone</td>
+                            <td>@employee.LastChange</td>
+                            <td>@employee.LastExport</td>
                             <td>
-                                @*<a href="@($"employee-details/{employee.Login.Uuid}")" class="btn btn-outline-primary">Details</a>*@
+                                <a href="@($"employee-details/{employee?.Id}")" class="btn btn-outline-primary">Details</a>
                             </td>
                         </tr>
                     }

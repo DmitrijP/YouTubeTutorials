@@ -1,25 +1,80 @@
 ﻿@page "/create-employee"
 @page "/edit-employee/{Id}"
 
-<h3>EmployeeEditor</h3>
-<h4>@InvalidValidationMessage</h4>
+@if (!Id.HasValue)
+{
+
+    <h3>Create new employee</h3>
+    <p>You can create a new employee here</p>
+}
+else
+{
+    <h3>Employee details</h3>
+    <p>You can change the details of your employee here. Last change date is: @Employee.LastChange</p>
+}
+
 
 <EditForm Model="@Employee" OnValidSubmit="HandleValidSubmit" OnInvalidSubmit="HandleInvalidSubmit">
     <ObjectGraphDataAnnotationsValidator />
     <ValidationSummary />
-    <InputSelect class="form-control" id="title" @bind-Value="Employee.Name.Title">
-        <option value="">Select classification ...</option>
-        <option value="Doctor">Dr.</option>
-        <option value="Professor">Prof.</option>
-        <option value="King">King</option>
-        <option value="Queen">Queen</option>
-    </InputSelect>
-    <InputText class="form-control" id="firstName" @bind-Value="Employee.Name.First" />
-    <ValidationMessage For="@(() => Employee.Name.First)" />
-    <InputText class="form-control" id="lastName" @bind-Value="Employee.Name.Last" />
-    <ValidationMessage For="@(() => Employee.Name.Last)" />
-    <InputText class="form-control" id="email" @bind-Value="Employee.Email" />
-    <ValidationMessage For="@(() => Employee.Email)" />
-
-    <button class="btn btn-outline-success" type="submit">Submit</button>
+    <p>
+        <label>
+            Titel
+            <InputSelect class="form-control" id="Title" @bind-Value="Employee.Title">
+                <option value="">Select classification ...</option>
+                <option value="Doctor">Dr.</option>
+                <option value="Professor">Prof.</option>
+            </InputSelect>
+        </label>
+    </p>
+    <p>
+        <label>
+            Firstname
+            <InputText class="form-control" id="FirstName" @bind-Value="Employee.FirstName" />
+            <ValidationMessage For="@(() => Employee.FirstName)" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Lastname
+            <InputText class="form-control" id="LastName" @bind-Value="Employee.LastName" />
+            <ValidationMessage For="@(() => Employee.LastName)" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Phone
+            <InputText class="form-control" id="Phone" @bind-Value="Employee.Phone" />
+            <ValidationMessage For="@(() => Employee.Phone)" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Email
+            <InputText class="form-control" id="Email" @bind-Value="Employee.Email" />
+            <ValidationMessage For="@(() => Employee.Email)" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Username
+            <InputText class="form-control" id="Username" @bind-Value="Employee.Username" />
+            <ValidationMessage For="@(() => Employee.Username)" />
+        </label>
+    </p>
+    <p>
+        <label>
+            Temporary password
+            <InputText class="form-control" id="TemporaryPassword" @bind-Value="Employee.TemporaryPassword" />
+            <ValidationMessage For="@(() => Employee.TemporaryPassword)" />
+        </label>
+    </p>
+    @if (Id.HasValue)
+    {
+        <button class="btn btn-outline-success" type="submit">Update</button>
+    }
+    else
+    {
+        <button class="btn btn-outline-success" type="submit">Create</button>
+    }
 </EditForm>

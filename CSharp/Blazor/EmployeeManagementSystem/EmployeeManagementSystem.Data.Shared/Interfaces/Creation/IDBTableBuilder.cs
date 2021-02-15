@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EmployeeManagementSystem.Data.Shared.Interfaces
+namespace EmployeeManagementSystem.Data.Shared.Interfaces.Creation
 {
     public interface IDBTableBuilder
     {

@@ -2,7 +2,7 @@
   "profiles": {
     "EmployeeManagementSystem.Data.Bootstrapper.CLI": {
       "commandName": "Project",
-      "commandLineArgs": "\"Data Source=C:\\Users\\dmitr\\Desktop\\sqlite-tools-win32-x86-3340100\\my_sqlite_db.db\""
+      "commandLineArgs": "\"Data Source=C:\\Users\\dmitr\\Desktop\\sqlite-tools-win32-x86-3340100\\my_sqlite_db2.db\""
     }
   }
 }

@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmployeeManagementSystem.ADLibs.Interfaces\EmployeeManagementSystem.ADLibs.Interfaces.csproj" />
+    <ProjectReference Include="..\EmployeeManagementSystem.ADLibs\EmployeeManagementSystem.ADLibs.csproj" />
     <ProjectReference Include="..\EmployeeManagementSystem.Data.Shared\EmployeeManagementSystem.Data.Shared.csproj" />
     <ProjectReference Include="..\EmployeeManagementSystem.Data.SQLiteLayer\EmployeeManagementSystem.Data.SQLiteLayer.csproj" />
     <ProjectReference Include="..\EmployeeManagementSystem.Shared\EmployeeManagementSystem.Shared.csproj" />

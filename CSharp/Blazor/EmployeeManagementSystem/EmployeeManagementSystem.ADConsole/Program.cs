@@ -1,5 +1,5 @@
 ﻿using EmployeeManagementSystem.ADLibs;
-using EmployeeManagementSystem.Data.SQLiteLayer;
+using EmployeeManagementSystem.Data.SQLiteLayer.Queries;
 using System;
 using System.Threading.Tasks;
 
@@ -18,14 +18,12 @@ namespace EmployeeManagementSystem.ADConsole
 
         public static async Task SelectUsers()
         {
-            var userManager = new UserManager(Credentials.USR, Credentials.PWD, Credentials.Domain);
+            var userManager = new UserManager(Credentials.USR, Credentials.PWD, Credentials.Domain, UsersPath);
             var queries = new EmployeeQueries(Credentials.ConnectionString);
-            var e = await queries.SelectAllEmployee();
-            foreach (var employee in e)
+            var employeeList = await queries.SelectAllEmployee();
+            foreach (var e in employeeList)
             {
-                var name = await queries.SelectName(new Data.Shared.Entities.Name { Id = employee.NameId });
-                var login = await queries.SelectLogin(new Data.Shared.Entities.Login { Uuid = employee.LoginUuid});
-                userManager.CreateUser(UsersPath, login.Username, login.Password + login.Salt, name.First, name.Last, employee.Email, employee.Cell);
+                userManager.Create(e.Username, e.TemporaryPassword, e.FirstName, e.LastName, e.Email, e.Phone);
             }
         }
 
@@ -33,8 +31,8 @@ namespace EmployeeManagementSystem.ADConsole
         {
             try
             {
-                var userManager = new UserManager(Credentials.USR, Credentials.PWD, Credentials.Domain);
-                var user = userManager.GetUser(BasePath, "bluedog411");
+                var userManager = new UserManager(Credentials.USR, Credentials.PWD, Credentials.Domain, BasePath);
+                var user = userManager.GetDetails("bluedog411");
                 int i = 1;
             }
             catch (Exception e)
@@ -49,15 +47,13 @@ namespace EmployeeManagementSystem.ADConsole
         {
             try
             {
-                var userManager = new UserManager(Credentials.USR, Credentials.PWD, Credentials.Domain);
-                userManager.RemoveUserFromGroup(BasePath, "bluedog411", "Employee");
+                var userManager = new GroupManager(Credentials.USR, Credentials.PWD, Credentials.Domain, BasePath, BasePath);
+                userManager.RemoveFromGroup("bluedog411", "Employee");
             }
             catch (Exception e)
             {
-
                 throw;
             }
-
         }
     }
 }
