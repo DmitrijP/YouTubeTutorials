@@ -1,44 +1,110 @@
-﻿@page "/employee-details/{Id}"
+﻿@page "/employee-details/{Id:int}"
 
 
 <h3>@Employee.FirstName @Employee.LastName</h3>
-<h4>Login information</h4>
 
-<a href="@($"edit-employee/{Employee.Id}")" class="btn btn-outline-primary">Edit Employee</a>
-<table class="table table-striped">
-    <tbody>
-        <tr>
-            <th width="33%">Login</th>
-            <td>@Employee.Username</td>
-        </tr>
-        <tr>
-            <th width="33%">Password</th>
-            <td>@Employee.TemporaryPassword</td>
-        </tr>
-    </tbody>
-</table>
-<h4>Contact information</h4>
-<table class="table table-striped">
-    <tbody>
-        <tr>
-            <th width="33%">Title</th>
-            <td>@Employee.Title</td>
-        </tr>
-        <tr>
-            <th width="33%">Mobile</th>
-            <td>@Employee.FirstName</td>
-        </tr>
-        <tr>
-            <th width="33%">Mobile</th>
-            <td>@Employee.LastName</td>
-        </tr>
-        <tr>
-            <th width="33%">Email</th>
-            <td>@Employee.Email</td>
-        </tr>
-        <tr>
-            <th width="33%">Telephone</th>
-            <td>@Employee.Phone</td>
-        </tr>
-    </tbody>
-</table>
+<div class="row">
+    <div class="col">
+        <h4>Login information</h4>
+        <a href="@($"edit-employee/{Employee.Id}")" class="btn btn-outline-primary">Edit Employee</a>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th width="33%">Login</th>
+                    <td>@Employee.Username</td>
+                </tr>
+                <tr>
+                    <th width="33%">Password</th>
+                    <td>@Employee.TemporaryPassword</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Contact information</h4>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th width="33%">Title</th>
+                    <td>@Employee.Title</td>
+                </tr>
+                <tr>
+                    <th width="33%">Mobile</th>
+                    <td>@Employee.FirstName</td>
+                </tr>
+                <tr>
+                    <th width="33%">Mobile</th>
+                    <td>@Employee.LastName</td>
+                </tr>
+                <tr>
+                    <th width="33%">Email</th>
+                    <td>@Employee.Email</td>
+                </tr>
+                <tr>
+                    <th width="33%">Telephone</th>
+                    <td>@Employee.Phone</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <h4>Active Directory User information</h4>
+        @if (AdUser != null)
+        {
+            @if (AdUser.Enabled.HasValue && AdUser.Enabled.Value)
+            {
+                <p>
+                    Userprofile is enabled:
+                    <a class="btn btn-outline-danger" @onclick="Disable">Disable</a>
+                </p>
+            }
+            else
+            {
+                <p>
+                    Userprofile is disabled:
+                    <a class="btn btn-outline-success" @onclick="Enable">Enable</a>
+                </p>
+            }
+            <h4>Password funcitons</h4>
+            <div class="btn-group">
+                <a class="btn btn-outline-primary" @onclick="ExpirePassword">Expire</a>
+                <a class="btn btn-outline-primary" @onclick="RefreshPassword">Reset</a>
+                <a class="btn btn-outline-primary" @onclick="UnlockPassword">Unlock</a>
+            </div>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <th width="33%">BadLogonCount</th>
+                        <td>
+                            @AdUser.BadLogonCount
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ChangePassword</th>
+                        <td>
+                            <input type="text" @bind="NewPassword" />
+                            <button type="button" class="btn btn-primary" @onclick="ChangePassword">Save changes</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>accountLockoutTime</th>
+                        <td>
+                            @AdUser.AccountLockoutTime
+                        </td>
+                    </tr>
+                    <tr>
+                        <th width="33%">LastBadPasswordAttempt</th>
+                        <td>@AdUser.LastBadPasswordAttempt</td>
+                    </tr>
+                    <tr>
+                        <th width="33%">LastLogon</th>
+                        <td>@AdUser.LastLogon</td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <a class="btn btn-outline-primary" @onclick="Create">Create</a>
+        }
+
+    </div>
+</div>

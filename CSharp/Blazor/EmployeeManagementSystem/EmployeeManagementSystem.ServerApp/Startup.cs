@@ -27,8 +27,16 @@ namespace EmployeeManagementSystem.ServerApp
             services.AddHttpClient<IEmployeeService, EmployeeService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:44301/");
-            }).ConfigurePrimaryHttpMessageHandler(() => {
-                return new HttpClientHandler() { UseDefaultCredentials = true};
+            }).ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                return new HttpClientHandler() { UseDefaultCredentials = true };
+            });
+            services.AddHttpClient<IADUserService, ADUserService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44301/");
+            }).ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                return new HttpClientHandler() { UseDefaultCredentials = true };
             });
         }
 

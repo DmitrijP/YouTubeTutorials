@@ -11,17 +11,20 @@ namespace EmployeeManagementSystem.ServerApp.Pages
     {
         [Parameter]
         public int? Id { get; set; }
+        
         [Inject]
         public IEmployeeService EmployeeService { get; set; }
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+        
         private Employee Employee { get; set; }
-        private bool NoEmployeeFound { get; set; }
+        public bool NoEmployeeFound { get; private set; }
 
         protected override async Task OnInitializedAsync()
         {
             if (Id.HasValue)
             {
-                Employee = (await EmployeeService.GetAll())
-                    .FirstOrDefault(e => e.Id == Id);
+                Employee = await EmployeeService.Get(Id.Value);
                 if(Employee == null)
                 {
                     NoEmployeeFound = true;
@@ -36,15 +39,19 @@ namespace EmployeeManagementSystem.ServerApp.Pages
 
         private async Task HandleValidSubmit()
         {
+            Employee e;
             if (Id.HasValue)
             {
-                //await EmployeeService.UpdateEmployee(Employee);
+                e = await EmployeeService.Update(Employee);
             }
             else
             {
-                await EmployeeService.CreateEmployee(Employee);
-                //Navigate to Details
+                e = await EmployeeService.Create(Employee);
             }
+            if(e == null)
+                NavigationManager.NavigateTo($"/error");
+            else
+                NavigationManager.NavigateTo($"/employee-details/{e.Id}");
         }
 
         private void HandleInvalidSubmit()
