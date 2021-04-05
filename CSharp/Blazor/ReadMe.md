@@ -14,3 +14,4 @@ Links führen direkt zu den Commits
 - [Teil 6 ActiveDirectory UserGenerator](https://github.com/DmitrijP/YouTubeTutorials/commit/37aefe4282c264ee12220ff1e67129b278e0e5af)
 - [Teil 7 ActiveDirectory UserManager](https://github.com/DmitrijP/YouTubeTutorials/commit/bb51e9eb9808b2e93984bb72ecd8ba5d24b3a402)
 - [Teil 8 Umbau der Applikation](https://github.com/DmitrijP/YouTubeTutorials/commit/c83977e652ec62071a1a8b6c4765d07f201028e8#diff-c0d87d07335fcb38d19db8e89ef865de6577c85f5dd93b41c220a2e90d44ee2c)
+- [Teil 9 Client Seite des AD UserManagers](https://github.com/DmitrijP/YouTubeTutorials/commit/80dc1f6bb67f262f368f0987ea2ceef1eeabdd9b)
