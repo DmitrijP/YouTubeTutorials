@@ -15,26 +15,23 @@ namespace LINQTutorial
 
         static void Main(string[] args)
         {
-            var employeeArray = GenerateEmployeeArray(300000);
-
-            var result = SearchWithYield(employeeArray);
-            PrintEmployeeArray(result);
-
-            Console.ReadLine();
+            var random = new Random((int)DateTime.Now.Ticks);
+            var idEnumerable = Enumerable.Range(1, 10000000);
+            var employeeArray = from x in idEnumerable
+                                select GenerateEmployee(x, random);
+            var result = employeeArray.ToList();
         }
 
-        private static IEnumerable<EmployeeModel> GenerateEmployeeArray(int count)
+        private static EmployeeModel GenerateEmployee(int id, Random random)
         {
-            var random = new Random((int)DateTime.Now.Ticks);
-            for (int i = 0; i < count; i++)
-                yield return new EmployeeModel
-                {
-                    Id = i,
-                    FirstName = FirstNames[random.Next(0, 5)],
-                    LastName = LastNames[random.Next(0, 5)],
-                    City = Cities[random.Next(0, 5)],
-                    BirthDay = DateTime.Now - TimeSpan.FromDays(365 * random.Next(18, 70))
-                };
+            return new EmployeeModel
+            {
+                Id = id,
+                FirstName = FirstNames[random.Next(0, 5)],
+                LastName = LastNames[random.Next(0, 5)],
+                City = Cities[random.Next(0, 5)],
+                BirthDay = DateTime.Now - TimeSpan.FromDays(365 * random.Next(18, 70))
+            };
         }
 
         private static IEnumerable<EmployeeModel> SearchWithYield(IEnumerable<EmployeeModel> inputList)
