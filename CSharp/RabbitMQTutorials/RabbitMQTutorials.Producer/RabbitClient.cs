@@ -8,19 +8,19 @@ namespace RabbitMQTutorials.Producer
     {
         private readonly IConnection _connection;
         private readonly IModel _channel;
-        private readonly string _exchangeName = "greetings";
+        private readonly string _exchangeName = "direct_greetings";
 
         public RabbitClient(IConnection connection)
         {
             _connection = connection;
             _channel = _connection.CreateModel();
-            _channel.ExchangeDeclare(_exchangeName, ExchangeType.Fanout);
+            _channel.ExchangeDeclare(_exchangeName, ExchangeType.Direct);
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(string key, string message)
         {
             var body = Encoding.UTF8.GetBytes(message);
-            _channel.BasicPublish(exchange: _exchangeName, routingKey: "", basicProperties: null, body: body);
+            _channel.BasicPublish(exchange: _exchangeName, routingKey: key, basicProperties: null, body: body);
         }
 
         public void Dispose()

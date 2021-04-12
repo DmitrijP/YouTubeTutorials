@@ -29,6 +29,9 @@ namespace RabbitMQTutorials.ConsoleClient
         private static void InitConsumer(ConnectionFactory factory)
         {
             var consumer = new Consumer.RabbitClient(factory.CreateConnection());
+            Console.WriteLine("Please enter a routing key:");
+            var key = Console.ReadLine();
+            consumer.BindQueueToRoutingKey(key);
             consumer.RegisterForMessageHandling();
             Console.WriteLine("Consumer is online, press enter to quit");
             Console.ReadLine();
@@ -42,8 +45,10 @@ namespace RabbitMQTutorials.ConsoleClient
             string message;
             while ((message = Console.ReadLine()) != "--quit")
             {
-                producer.SendMessage(message);
-                Console.WriteLine("Message was send, enter a new message or <--quit> to quit");
+                Console.WriteLine("Please enter a routing key:");
+                var key = Console.ReadLine();
+                producer.SendMessage(key, message);
+                Console.WriteLine($"Message was send to {key}, enter a new message or <--quit> to quit");
             }
             producer.Dispose();
         }
