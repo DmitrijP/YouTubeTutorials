@@ -15,6 +15,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>insurance-backend-console</module>
+        <module>insurance-backend-data</module>
     </modules>
 
     <properties>
