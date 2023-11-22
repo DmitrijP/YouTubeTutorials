@@ -1,61 +1,79 @@
 package de.dmitrij.patuk.insurance.backend.api.controller;
 
+import de.dmitrij.patuk.insurance.backend.api.dto.UserProfileCreationDto;
+import de.dmitrij.patuk.insurance.backend.api.dto.UserProfileCreationResultDto;
+import de.dmitrij.patuk.insurance.backend.api.mapper.UserProfileEntityToDtoMapper;
 import de.dmitrij.patuk.insurance.backend.data.entities.UserProfileEntity;
 import de.dmitrij.patuk.insurance.backend.data.repositories.UserProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/user-profile")
 public class UserProfileController {
 
     private final UserProfileRepository userProfileRepository;
-    @Autowired
-    public UserProfileController(UserProfileRepository userProfileRepository) {
-        this.userProfileRepository = userProfileRepository;
-    }
+    private final UserProfileEntityToDtoMapper mapper;
 
-    @GetMapping("greeting")
-    public String greet(@RequestParam("name") String name){
-        return "Hello " + name;
+    @Autowired
+    public UserProfileController(UserProfileRepository userProfileRepository,
+                                 UserProfileEntityToDtoMapper mapper) {
+        this.userProfileRepository = userProfileRepository;
+        this.mapper = mapper;
     }
 
     @PostMapping("create")
-    public String addUserProfile(@RequestParam("firstName") String firstName,
-                                 @RequestParam("lastName") String lastName,
-                                 @RequestParam("userName") String userName){
-        var userProfile = new UserProfileEntity();
-        userProfile.setFirstName(firstName);
-        userProfile.setLastName(lastName);
-        userProfile.setUserName(userName);
+    public ResponseEntity<UserProfileEntity> addUserProfile(
+            @RequestParam("firstName") String firstName,
+            @RequestParam("lastName") String lastName,
+            @RequestParam("userName") String userName){
+        var userProfile = mapper.map(firstName,lastName, userName);
         var savedProfile = userProfileRepository.save(userProfile);
-        return savedProfile.getId();
+        return ResponseEntity.ok(savedProfile);
+    }
+
+    @PostMapping("create-with-json")
+    public ResponseEntity<UserProfileCreationResultDto> addUserProfileJson(@RequestBody UserProfileCreationDto profile){
+        var userProfile = mapper.map(profile);
+        var savedProfile = userProfileRepository.save(userProfile);
+        var dto = mapper.map(savedProfile);
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping("find-by-id")
-    public UserProfileEntity addUserProfile(@RequestParam("id") String id) throws Exception {
+    public ResponseEntity<UserProfileCreationResultDto> addUserProfile(@RequestParam("id") String id) {
         var foundProfileOpt = userProfileRepository.findById(id);
         if(foundProfileOpt.isPresent()){
-            return foundProfileOpt.get();
+            var savedProfile = foundProfileOpt.get();
+            var dto = mapper.map(savedProfile);
+            return ResponseEntity.ok(dto);
         }
-        throw new Exception("whatever");
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("find-all")
-    public List<UserProfileEntity> findProfiles() throws Exception {
+    public ResponseEntity<List<UserProfileCreationResultDto>> findProfiles()  {
         var foundProfileOpt = userProfileRepository.findAll();
-        return foundProfileOpt;
+        var mappedDtos = foundProfileOpt.stream()
+                .map(mapper::map)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(mappedDtos);
     }
 
+
+
     @DeleteMapping("delete-by-id")
-    public String deleteById(String id) throws Exception {
+    public ResponseEntity deleteById(String id) {
         var profileOpt = userProfileRepository.findById(id);
         if(profileOpt.isPresent()){
             userProfileRepository.delete(profileOpt.get());
-            return "deleted";
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-        return "no entity existed with id " + id;
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }
