@@ -16,6 +16,7 @@
     <modules>
         <module>insurance-backend-console</module>
         <module>insurance-backend-data</module>
+        <module>insurance-backend-api</module>
     </modules>
 
     <properties>
