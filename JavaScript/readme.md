@@ -6,6 +6,8 @@ https://www.youtube.com/playlist?list=PLtFURTtAiZIlQ1o4bpxYIGq7yIdvChxMo
 
 ## Kapitel 0: Grundlagen
 
+Video: https://youtu.be/X6kGSpmeX7A
+
 ### Variablendeklaration:
 ```js
 var theVar;
@@ -166,6 +168,8 @@ console.log(a);
 
 ## Kapitel 2: Gleichheit in JavaScript
 
+Video: https://youtu.be/yJvtzCFqmu0
+
 Es gibt zwei arten von Vergleichen in JavaScript, `=== (strict equality)` und `== (loose equality)`.
 
 Dabei prüft `strict equality` auf den Typ und den Wert der Variablen. Es führt keine automatische Typconversion aus.
@@ -251,6 +255,8 @@ obj == 123
 In `javascript` gibt es mehrere Arten der Funktionsdefinition.
 
 #### Normale Funktionsdefinition
+
+Video: https://youtu.be/kYSD8S2sCVM
 
 Wird sofort an den Anfang des `scopes` gehoisted und kann verwendet werden bevor sie definiert wurde:
 ```js
@@ -354,6 +360,9 @@ myFunc(lowerCase, `Dmitrij`)
 
 
 ## Kapitel 4: Array Functions
+
+Video: https://youtu.be/MKBXHSHB8v8 
+
 In diesem Kapitel werden wir unsere eigenen Array Funktionen bauen.
 
 ### forEach()
@@ -530,6 +539,9 @@ toExecuteOnce();
 ```
 
 ## Kapitel 6: Currying
+
+Video: https://youtu.be/lvlZAYFvToY
+
 In diesem Kapitel sprechen wir über das Currying. Dies ist eine Programmiertechnik die es uns erlaubt einige Parameter einer Funktion vor zu belegen und somit eine Konfiguration vorzunehmen.
 Man nennt es auch Teilausführung einer Funktion. Sie nutzt Closures um diese vor belegten Parameter zu speichern.
 
