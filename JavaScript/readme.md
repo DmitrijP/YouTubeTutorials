@@ -205,7 +205,9 @@ Unterschiedliche Datentypen werden beide zu `int` konvertiert. Dabei wird auf de
 ```
 
 Jetzt kommen wir zum meme:
-![[Pasted image 20251001213919.png|500]]
+
+<img src="equality_meme.png" width="400" />
+
 Warum gibt uns JS ein false aus bei Vergleicht zwischen "0" und []?
 ```js
 console.log(0 == "0"); 
