@@ -1,5 +1,7 @@
 # DIY HTTP Server
 
+Youtube Video: https://youtu.be/LNMvuUUUbMg
+
 Ziel dieser Dokumentation ist es einen eigenen HTTP Server zu bauen und zu verstehen wie die Kommunikation zwischen Server und Browser/Client ablauft.
  
 --- 
