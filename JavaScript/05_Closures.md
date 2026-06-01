@@ -1,4 +1,4 @@
-## Kapitel 5 Closures
+## Closures
 Youtube Video:
 https://youtu.be/kYSD8S2sCVM?list=PLtFURTtAiZIlQ1o4bpxYIGq7yIdvChxMo&t=511
 
