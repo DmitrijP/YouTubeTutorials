@@ -1,4 +1,7 @@
 ## Kapitel 5 Closures
+Youtube Video:
+https://youtu.be/kYSD8S2sCVM?list=PLtFURTtAiZIlQ1o4bpxYIGq7yIdvChxMo&t=511
+
 Closures ist eine Programmiertechnik die es uns im Funktionellen Kontext erlaubt variablen innerhalb von Funktionen zwischen zu speichern.
 
 Dabei gibt die Funktion die ein Closure generiert immer eine neue Funktion zurück die die zwischenzuspeichernde Variable referenziert. In dem Fall `value` Meist wird eine weitere Variable außerhalb der zurückgegebenen Funktion gehalten (`a`).  Diese Variable ist der Speicher in dem die Funktion ihre Werte hält. 
