@@ -1,4 +1,4 @@
-## Kapitel 1: Grundlagen
+## Grundlagen
 
 Video: https://youtu.be/X6kGSpmeX7A
 
@@ -54,7 +54,7 @@ var obj = {
 - `block scope`: Gültig innerhalb des `{}` Blocks in dem es definiert wurde.
 - `lexical scope`: Gültig dort wo es bei der definition hin geschrieben wurde.
 
-## Kapitel 1: Variablen Details
+## Variablen
 
 Es gibt drei Möglichkeiten Variablen zu initialisieren. Mit den Keywörtern: `var`, `let` und `const`.
 
