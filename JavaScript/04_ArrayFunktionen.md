@@ -1,4 +1,4 @@
-## Kapitel 4: Array Functions
+## Array Functions
 
 Video: https://youtu.be/MKBXHSHB8v8 
 
