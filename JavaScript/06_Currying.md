@@ -1,4 +1,4 @@
-## Kapitel 6: Currying
+## Currying
 
 Video: https://youtu.be/lvlZAYFvToY
 
