@@ -1,4 +1,4 @@
-## Kapitel 3: Funktionen
+## Funktionen
 
 In `javascript` gibt es mehrere Arten der Funktionsdefinition.
 
