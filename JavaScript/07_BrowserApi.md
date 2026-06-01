@@ -1,4 +1,4 @@
-## Kapitel 7: Browser APIs
+## Browser APIs
 Browser bieten Funktionen an die über Javascript aufgerufen werden können. Dies sind keine Funktionalitäten die Javascript von sich aus mit bringt. Es sind Teile des ausführenden Browsers (Chrome, Firefox, Opera) oder anderer Laufzeitumgebungen wie `Node.js`
 
 ### console.log(msg)
