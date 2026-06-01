@@ -1,4 +1,4 @@
-## Kapitel 2: Gleichheit in JavaScript
+## Vergleiche in JavaScript
 
 Video: https://youtu.be/yJvtzCFqmu0
 
