@@ -4,7 +4,7 @@ Dies soll eine Einleitung in JS Grundlagen sein.
 Folgt der Tutorialserie: *JavaScript Deep Dive* 
 https://www.youtube.com/playlist?list=PLtFURTtAiZIlQ1o4bpxYIGq7yIdvChxMo 
 
-- [Kapitel 0: Grundlagen](./01_Grundlagen.md)
+- [Kapitel 1: Grundlagen](./01_Grundlagen.md)
 Video: https://youtu.be/X6kGSpmeX7A
 
 - [Kapitel 2: Gleichheit in JavaScript](./02_Gleichheit.md)
