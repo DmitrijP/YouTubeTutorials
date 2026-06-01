@@ -1,4 +1,4 @@
-## Kapitel 0: Grundlagen
+## Kapitel 1: Grundlagen
 
 Video: https://youtu.be/X6kGSpmeX7A
 
