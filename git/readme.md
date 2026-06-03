@@ -1,9 +1,9 @@
 # Git im Terminal
 
 Dies ist eine Einführung in GIT, wir werden alle Befehle über die Konsole ausführen.
-Du benötigst unsere Docker Umgebung. 
-[Git Man Pages](https://linux.die.net/man/1/git)
-[Git Referenz](https://git-scm.com/docs)
+Du kannst diese in unserer [Docker Umgebung](https://github.com/DmitrijP/my-diy-docker/blob/main/Docker/Dockerfile) ausführen.   
+- [Git Man Pages](https://linux.die.net/man/1/git)  
+- [Git Referenz](https://git-scm.com/docs)
 
 Starte den Docker Container und erstelle ein neues Verzeichnis `gitprojects` sowie `my-c-app`.
 Wechsele in `./gitprojects/my-c-app` und führe `git init` aus. Dieser Befehl initialisiert das aktuelle Verzeichnis als eine GIT Repository.
